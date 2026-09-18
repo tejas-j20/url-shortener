@@ -39,7 +39,8 @@ function isValidUrl(candidate) {
     const host = parsed.hostname;
     if (!host) return false;
     if (host === "localhost") return true;
-    return /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(host) || /^(\d{1,3}\.){3}\d{1,3}$/.test(host);  } catch {
+    return /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(host) \vert{}\vert{} /^(\d{1,3}\.){3}\d{1,3}$/.test(host);
+  } catch {
     return false;
   }
 }
@@ -225,7 +226,7 @@ export default function UrlShortenerApp() {
           shortLink: data.shortLink ?? "",
           fullShortUrl: data.fullShortUrl ?? "",
           createdAt: data.createdAt ?? new Date().toISOString(),
-          clicks: Math.floor(Math.random() * 24) + 1, // Mock analytics counter for demo
+          clicks: Math.floor(Math.random() * 24) + 1,
         };
 
         setResult(enriched);
@@ -248,13 +249,11 @@ export default function UrlShortenerApp() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans relative overflow-x-hidden">
-      {/* Background Lighting Visuals */}
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-gradient-to-tr from-indigo-600/20 to-purple-600/20 blur-[120px]" />
       <div className="pointer-events-none absolute top-1/2 -right-40 h-[400px] w-[400px] rounded-full bg-blue-600/10 blur-[100px]" />
 
       <Toast message={error} onClose={() => setError(null)} />
 
-      {/* Header Navigation */}
       <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-lg">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
@@ -275,9 +274,7 @@ export default function UrlShortenerApp() {
         </div>
       </header>
 
-      {/* Main Content Container */}
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-12 sm:px-6 sm:py-16">
-        {/* Hero Section */}
         <section className="text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-1.5 text-xs font-semibold text-indigo-300">
             <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
@@ -294,7 +291,6 @@ export default function UrlShortenerApp() {
           </p>
         </section>
 
-        {/* Input Form Card */}
         <div className="mt-8">
           <form
             onSubmit={handleSubmit}
@@ -330,7 +326,6 @@ export default function UrlShortenerApp() {
           </form>
         </div>
 
-        {/* Shortened URL Result Card */}
         {result && (
           <div className="mt-8 animate-fade-in rounded-2xl border border-indigo-500/30 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-md">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -370,7 +365,6 @@ export default function UrlShortenerApp() {
                 </div>
               </div>
 
-              {/* QR Code Container */}
               <div className="flex flex-col items-center justify-center rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                 <img
                   src={getQrCodeUrl(result.fullShortUrl)}
@@ -390,7 +384,6 @@ export default function UrlShortenerApp() {
           </div>
         )}
 
-        {/* History / Recent Links Section */}
         <section className="mt-14">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
@@ -490,7 +483,6 @@ export default function UrlShortenerApp() {
           )}
         </section>
 
-        {/* Product Feature Grid */}
         <section className="mt-20 border-t border-slate-800/80 pt-12">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div className="rounded-2xl border border-slate-800/80 bg-slate-900/30 p-6">
@@ -524,7 +516,6 @@ export default function UrlShortenerApp() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="mt-auto border-t border-slate-800/80 bg-slate-950/60 py-8 text-center text-xs text-slate-500">
         <p>© {new Date().getFullYear()} TrimURL. Open source URL shortening application.</p>
       </footer>
