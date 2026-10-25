@@ -31,3 +31,21 @@ build/
 
 ### VS Code ###
 .vscode/
+# Dependencies and build output
+node_modules/
+dist/
+target/
+
+# IDE and editor
+.idea/
+*.iml
+.vscode/
+
+# Secrets and local files
+.env
+*.log
+
+# Generated
+repomix-output.xml
+frontend-repomix.xml
+HELP.md

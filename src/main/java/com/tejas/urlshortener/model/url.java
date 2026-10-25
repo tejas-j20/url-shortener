@@ -9,7 +9,7 @@ public class url {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
+    @Column(length = 2048)
     private String originalURL;
 
     private String shortLink;

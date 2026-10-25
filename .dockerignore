@@ -1,0 +1,9 @@
+**/node_modules
+**/target
+dist
+.git
+.idea
+.vscode
+*.iml
+repomix-output.xml
+frontend-repomix.xml
