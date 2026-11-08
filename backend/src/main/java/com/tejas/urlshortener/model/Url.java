@@ -2,9 +2,11 @@ package com.tejas.urlshortener.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
-public class Url {
+public class Url implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

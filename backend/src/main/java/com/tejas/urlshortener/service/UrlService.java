@@ -7,6 +7,8 @@ import java.time.ZoneOffset;
 
 import java.time.LocalDateTime;
 import java.util.Random;
+import org.springframework.cache.annotation.Cacheable;
+
 
 @Service
 public class UrlService {
@@ -23,6 +25,7 @@ public class UrlService {
         return urlRepository.save(newUrl);
     }
 
+    @Cacheable(value = "urls", key = "#shortLink", unless = "#result == null")
     public Url getEncodedUrl(String shortLink) {
         return urlRepository.findByShortLink(shortLink);
     }
