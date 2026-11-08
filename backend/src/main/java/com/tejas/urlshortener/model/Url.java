@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 
 @Entity
-public class url {
+public class Url {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,11 +15,11 @@ public class url {
     private String shortLink;
     private LocalDateTime creationDate;
 
-    public url() {
+    public Url() {
 
     }
 
-    public url(String originalURL, String shortLink, LocalDateTime creationDate) {
+    public Url(String originalURL, String shortLink, LocalDateTime creationDate) {
         this.originalURL = originalURL;
         this.shortLink = shortLink;
         this.creationDate = creationDate;

@@ -1,31 +1,30 @@
 package com.tejas.urlshortener.service;
 
-
-import com.tejas.urlshortener.model.url;
-import com.tejas.urlshortener.repository.urlRepository;
-import jakarta.persistence.Cacheable;
+import com.tejas.urlshortener.model.Url;
+import com.tejas.urlshortener.repository.UrlRepository;
 import org.springframework.stereotype.Service;
+import java.time.ZoneOffset;
 
 import java.time.LocalDateTime;
 import java.util.Random;
 
 @Service
-public class urlService {
+public class UrlService {
 
-    private final urlRepository myRepository;
+    private final UrlRepository urlRepository;
 
-    public urlService(urlRepository myRepository) {
-        this.myRepository = myRepository;
+    public UrlService(UrlRepository urlRepository) {
+        this.urlRepository = urlRepository;
     }
 
-    public url generateShortLink(String originalUrl) {
+    public Url generateShortLink(String originalUrl) {
         String randomString = generateRandomString();
-        url newurl = new url(originalUrl, randomString, LocalDateTime.now());
-        return myRepository.save(newurl);
+        Url newUrl = new Url(originalUrl, randomString, LocalDateTime.now(ZoneOffset.UTC));
+        return urlRepository.save(newUrl);
     }
 
-    public url getEncodedUrl(String shortLink) {
-        return myRepository.findByShortLink(shortLink);
+    public Url getEncodedUrl(String shortLink) {
+        return urlRepository.findByShortLink(shortLink);
     }
 
     private String generateRandomString() {
@@ -39,4 +38,3 @@ public class urlService {
         return shortLink.toString();
     }
 }
-
