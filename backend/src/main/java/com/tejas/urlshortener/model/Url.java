@@ -12,8 +12,9 @@ public class Url implements Serializable {
     private Long id;
 
     @Column(length = 2048)
-    private String originalURL;
+    private String originalUrl;
 
+    @Column(unique = true, nullable = false)
     private String shortLink;
     private LocalDateTime creationDate;
 
@@ -21,8 +22,8 @@ public class Url implements Serializable {
 
     }
 
-    public Url(String originalURL, String shortLink, LocalDateTime creationDate) {
-        this.originalURL = originalURL;
+    public Url(String originalUrl, String shortLink, LocalDateTime creationDate) {
+        this.originalUrl = originalUrl;
         this.shortLink = shortLink;
         this.creationDate = creationDate;
     }
@@ -35,12 +36,12 @@ public class Url implements Serializable {
         this.id = id;
     }
 
-    public String getOriginalURL() {
-        return originalURL;
+    public String getOriginalUrl() {
+        return originalUrl;
     }
 
-    public void setOriginalURL(String originalURL) {
-        this.originalURL = originalURL;
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl;
     }
 
     public String getShortLink() {

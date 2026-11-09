@@ -27,7 +27,7 @@ public class RedirectController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create(found.getOriginalURL()))
+                .location(URI.create(found.getOriginalUrl()))
                 .build();
     }
 }
