@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Link not found</title>
+    <style>
+        :root {
+          --desk: #e3e5e8; --page: #f3f4f6; --line: #cdd2d8;
+          --ink: #1a1a1a; --muted: #596170; --highlight: #ffe14d;
+        }
+        @media (prefers-color-scheme: dark) {
+          :root:not([data-theme="light"]) {
+            --desk: #0e1012; --page: #181a1d; --line: #353a41; --ink: #eceef0; --muted: #a3aab4;
+          }
+        }
+        :root[data-theme="dark"] {
+          --desk: #0e1012; --page: #181a1d; --line: #353a41; --ink: #eceef0; --muted: #a3aab4;
+        }
+        * { box-sizing: border-box; }
+        body {
+          margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 1.5rem;
+          background: var(--desk); color: var(--ink);
+          font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+        main {
+          width: 100%; max-width: 32rem; padding: 2rem;
+          background: var(--page); border: 1px solid var(--line); border-radius: 0.75rem;
+        }
+        h1 { margin: 0 0 0.75rem; font-size: 1.75rem; line-height: 1.2; }
+        p { margin: 0 0 1.5rem; color: var(--muted); line-height: 1.5; }
+        a {
+          display: inline-block; padding: 0.6rem 1.1rem; border-radius: 0.375rem;
+          background: var(--highlight); color: #1a1a1a; font-weight: 600; text-decoration: none;
+        }
+        a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+    </style>
+    <script>
+        try {
+          var t = localStorage.getItem("url-shortener-theme");
+          if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+        } catch (e) {}
+    </script>
+</head>
+<body>
+<main>
+    <h1>That link doesn't exist.</h1>
+    <p>The short link may have been typed wrong, or it was never created.</p>
+    <a href="/">Shorten a link</a>
+</main>
+</body>
+</html>
